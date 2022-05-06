@@ -3,94 +3,466 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- CSS de Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <style>
-            .bg-pato {
-                background: #bf8b4b;
+            @import url("https://fonts.googleapis.com/css2?family=Trispace:wght@300;400;600&display=swap");
+
+            :root {
+                --bs-body-font-family: "Trispace", sans-serif;
+                --bs-body-color: #eef;
+                --bs-body-bg: #10121c;
             }
         </style>
         <title>Introducción al Desarrollo Front End con HTML, CSS y JavaScript</title>
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-pato" aria-label="First navbar example">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Los Patos</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarsExample01">
-                    <ul class="navbar-nav me-auto mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Portada</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Digimon</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <header class="container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center display-4 mt-5">PATOS EN CHILE</h1>
-                    <h2 class="text-center fs-6 mb-5">Introducción al Desarrollo Front End con HTML, CSS y JavaScript</h2>
+        <header>
+            <div class="container">
+                <div class="row pt-5">
+                    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+                        <h1 class="display-4 text-center py-2">Magic: The Gathering</h1>
+                        <p class="lead">
+                            Magic: The Gathering y frecuentemente abreviado como Magic, MTG y Cartas Magic, es un juego de cartas coleccionables diseñado en 1993 por Richard Garfield, profesor de matemáticas, y comercializado por la empresa
+                            Wizards of the Coast. Magic es el primer ejemplo de juego de cartas coleccionables moderno, con más de seis millones de jugadores en cincuenta y dos países diferentes. Magic puede ser jugado por dos o más
+                            jugadores, cada uno de ellos usando un mazo individual.
+                        </p>
+                        <p>
+                            Cada partida de Magic representa una batalla entre poderosos magos (en el juego conocidos como planeswalkers), en el que cada uno de estos es uno de los jugadores de la partida. Los jugadores pueden usar hechizos
+                            (conjuros, artefactos, tierras, criaturas fantásticas, etc.), representados individualmente en cada carta, para derrotar a sus oponentes. De este modo, el concepto original del juego se inspira de forma notable
+                            en los duelos de magos típicos de los juegos de rol tradicionales, como Dungeons & Dragons. La estructura del juego reemplaza los útiles usados en los juegos de aventura de papel y lápiz por una gran cantidad de
+                            cartas y unas reglas más complejas que la mayoría de otros juegos de cartas.
+                        </p>
+                    </div>
                 </div>
             </div>
         </header>
+
         <main class="container">
-            <div class="row">
-                <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 mx-auto mb-5">
-                    <p>Pato es el nombre común para ciertas aves de la familia Anatidae, aves usualmente migradoras que suelen vivir en las proximidades del agua, a la que se han adaptado con sus patas palmeadas</p>
-                    <p>Los patos pertenecen, principalmente, a la subfamilia Anatidae y dentro de ella del género Anas. No son un grupo monofilético, ya que no se incluyen los cisnes ni los gansos.</p>
-                    <p>Hay 14 especies de aves silvestres que en Chile reciben el nombre de pato, con algún apellido. A estos patos se le puede sumar el Quetru no-volador, cuyo nombre no tan común de pato vapor austral.</p>
+            <div class="accordion mx-md-5 my-5 rounded-0" id="accordionExample">
+                <!--Edades de pasajeros-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header bg-dark" id="headingOne">
+                        <button class="accordion-button rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Rareza</button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Este gráfico nos muertra cuanto tipos de cartas comunes, raras y poco comunes tiene el set LEB de Magic: The Gathering.
+                            </p>
+                            <div class="col-md-6 mx-auto mb-3">
+                                <canvas id="primerChart" width="100" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Pasajeras y pasajeros-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Coste de Maná</button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                En este gráfico podemos saber cuántas cartas hay en el set LEB dependiendo su coste de maná, siendo el coste mínimo de maná 0 y el máximo 7.
+                            </p>
+                            <div class="col-md-6 mx-auto mb-3">
+                                <canvas id="segundoChart" width="100" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Clases-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Artistas</button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Este gráfico nos muestra la cantidad de cartas ilustradas por cada artista.
+                            </p>
+                            <div class="col-md-6 mx-auto mb-3">
+                                <canvas id="tercerChart" width="100" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Sobrevivientes por clases-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Cuarto Gráfico</button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Cuarto Gráfico: Explique.
+                            </p>
+                            <canvas id="cuartoChart" width="100" height="30"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--Mujeres y niños primero-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Quinto Gráfico</button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Quinto Gráfico: Explique.
+                            </p>
+                            <canvas id="quintoChart" width="100" height="30"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--Extra-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseFive">Sexto Gráfico</button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Sexto Gráfico: Explique.
+                            </p>
+                            <canvas id="sextoChart" width="100" height="50"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin-->
+                <!--Mujeres y niños primero-->
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Septimo Gráfico</button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-black-50">
+                            <p>
+                                Septimo Gráfico: Explique.
+                            </p>
+                            <canvas id="septimoChart" width="100" height="30"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3 text-center" id="aqui"></div>
-        </main>
-        <footer class="container">
             <div class="row">
-                <div class="col"><p class="text-muted mt-5 text-center small">Bootstrap v5.1 y datos en JavaScript</p></div>
+                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+                    <p>
+                        lalalalalal
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto small text-center">
+                        <p>
+                            Fuentes: lalala
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col"><p class="text-muted mt-5 text-center small">Bootstrap v5.1 y Charts.js</p></div>
+                </div>
             </div>
         </footer>
+
+        <!-- Biblioteca de Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- Biblioteca Chart.js -->
         <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
-            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+            integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
+        <!-- Un gran script, que contiene una función asincrónica para ir a buscar un JSON con -->
         <script>
-            var data, aves;
-
-            function preload() {
-                data = loadJSON("https://aves.ninjas.cl/api/birds");
-            }
-
-            function setup() {
-                noCanvas();
+            async function todo() {
+                const consulta = await fetch("https://raw.githubusercontent.com/bastiloestacogido/05-05Datos/main/datos.json");
+                const data = await consulta.json();
                 console.log(data);
-                aves = Object.values(data);
-                console.log(aves);
-                aves.forEach((a) => {
-                    if (a.name.spanish.includes("Pato") || a.name.english.includes("duck")) {
-                        createElement(
-                            "div",
-                            '<div class="card shadow-sm"><img class="card-img-top" src="' +
-                                a.images.thumb +
-                                '"><div class="card-body"><p class="card-text"><a href="single.html?detalle=' +
-                                a._links.self +
-                                '">' +
-                                a.name.spanish +
-                                "</p></div>"
-                        )
-                            .class("col")
-                            .parent("aqui");
+
+                var cuantasComunes = 0;
+                var cuantasRaras = 0;
+                var cuantasPocoComunes = 0;
+
+                data.forEach((d) => {
+                    if (d.rarity == "common") {
+                        cuantasComunes = cuantasComunes + 1;
+                    } else if (d.rarity == "rare") {
+                        cuantasRaras = cuantasRaras + 1;
+                    } else {
+                        cuantasPocoComunes = cuantasPocoComunes + 1;
                     }
                 });
+
+                var cuantasMana = 0;
+                var cuantasMana1 = 0;
+                var cuantasMana2 = 0;
+                var cuantasMana3 = 0;
+                var cuantasMana4 = 0;
+                var cuantasMana5 = 0;
+                var cuantasMana6 = 0;
+                var cuantasMana7 = 0;
+
+                data.forEach((d) => {
+                    if (d.manaValue == 0.0) {
+                        cuantasMana = cuantasMana + 1;
+                    } else if (d.manaValue == 1.0) {
+                        cuantasMana1 = cuantasMana1 + 1;
+                    } else if (d.manaValue == 2.0) {
+                        cuantasMana2 = cuantasMana2 + 1;
+                    } else if (d.manaValue == 3.0) {
+                        cuantasMana3 = cuantasMana3 + 1;
+                    } else if (d.manaValue == 4.0) {
+                        cuantasMana4 = cuantasMana4 + 1;
+                    } else if (d.manaValue == 5.0) {
+                        cuantasMana5 = cuantasMana5 + 1;
+                    } else if (d.manaValue == 6.0) {
+                        cuantasMana6 = cuantasMana6 + 1;
+                    } else {
+                        cuantasMana7 = cuantasMana7 + 1;
+                    }
+                });
+
+                var am = 0;
+                var cr = 0;
+                var df = 0;
+                var dg = 0;
+                var tw = 0;
+                var jam = 0;
+                var jb = 0;
+                var rt = 0;
+                var mab = 0;
+                var ds = 0;
+                var bs = 0;
+                var qh = 0;
+                var mt = 0;
+                var rs = 0;
+                var cb = 0;
+                var dw = 0;
+                var aw = 0;
+                var mp = 0;
+                var jm = 0;
+                var dt = 0;
+                var ra = 0;
+                var ar = 0;
+                var se = 0;
+                var fj = 0;
+                var kb = 0;
+
+                var NombreArtista = ['Anson Maddocks', 'Christopher Rush', 'Dan Frazier', 'Daniel Gelon', 'Tom Wänerstrand', 'Jeff A. Menges', 'Julie Baroh', 'Richard Thomas', 'Melissa A. Benson', 'Douglas Shuler', 'Brian Snøddy', 'Quinton Hoover', 'Mark Tedin', 'Ron Spencer', 'Cornelius Brudi', 'Dameon Willich', 'Amy Weber ', 'Mark Poole', 'Jesper Myrfors'];
+                var masArtistas = NombreArtista.push('Drew Tucker', 'Rob Alexander', 'Andi Rusu', 'Sandra Everingham', 'Fay Jones', 'Kev Brockschmidt');
+
+                data.forEach((d) => {
+                    if (d.artist == "Anson Maddocks") {
+                        am = am + 1;
+                    } else if (d.artist == "Christopher Rush") {
+                        cr = cr + 1;
+                    } else if (d.artist == "Dan Frazier") {
+                        df = df + 1;
+                    } else if (d.artist == "Daniel Gelon") {
+                        dg = dg + 1;
+                    } else if (d.artist == "Tom Wänerstrand") {
+                        tw = tw + 1;
+                    } else if (d.artist == "Jeff A. Menges") {
+                        jam = jam + 1;
+                    } else if (d.artist == "Julie Baroh") {
+                        jb = jb + 1;
+                    } else if (d.artist == "Richard Thomas") {
+                        rt = rt + 1;
+                    } else if (d.artist == "Melissa A. Benson") {
+                        mab = mab + 1;
+                    } else if (d.artist == "Douglas Shuler") {
+                        ds = ds + 1;
+                    } else if (d.artist == "Brian Snõddy") {
+                        bs = bs + 1;
+                    } else if (d.artist == "Quinton Hoover") {
+                        qh = qh + 1;
+                    } else if (d.artist == "Mark Tedin") {
+                        mt = mt + 1;
+                    } else if (d.artist == "Ron Spencer") {
+                        rs = rs + 1;
+                    } else if (d.artist == "Cornelius Brudi") {
+                        cb = cb + 1;
+                    } else if (d.artist == "Dameon Willich") {
+                        dw = dw + 1;
+                    } else if (d.artist == "Amy Weber") {
+                        aw = aw + 1;
+                    } else if (d.artist == "Mark Poole") {
+                        mp = mp + 1;
+                    } else if (d.artist == "Jesper Myrfors") {
+                        jm = jm + 1;
+                    } else if (d.artist == "Drew Tucker") {
+                        dt = dt + 1;
+                    } else if (d.artist == "Rob Alexander") {
+                        ra = ra + 1;
+                    } else if (d.artist == "Andi Rusu") {
+                        ar = ar + 1;
+                    } else if (d.artist == "Sandra Everingham") {
+                        se = se + 1;
+                    } else if (d.artist == "Fay Jones") {
+                        fj = fj + 1;
+                    } else {
+                        kb = kb + 1;
+                    }
+                });
+
+                console.log(NombreArtista);
+
+                // rareza
+                new Chart(document.getElementById("primerChart").getContext("2d"), {
+                    type: "doughnut",
+                    data: {
+                        labels: ["Común", "Rara", "Poco Común"],
+                        datasets: [{ data: [cuantasComunes, cuantasRaras, cuantasPocoComunes], label: "Rareza de Cartas", backgroundColor: ["#D9B4B2", "#9EBCDA", "#495F8F"] }],
+                    },
+                    options: {
+                        animation: false,
+                        layout: {
+                            padding: 10,
+                        },
+                    },
+                });
+
+                //maná
+                new Chart(document.getElementById("segundoChart").getContext("2d"), {
+                    type: "bar",
+                    data: {
+                        labels: ["Coste 0", "Coste 1", "Coste 2", "Coste 3", "Coste 4", "Coste 5", "Coste 6", "Coste 7"],
+                        datasets: [{ data: [cuantasMana, cuantasMana1, cuantasMana2, cuantasMana3, cuantasMana4, cuantasMana5, cuantasMana6, cuantasMana7], label: "Número de Cartas", backgroundColor: ["#8CB1E5"] }],
+                    },
+                    options: {
+                        indexAxis: "x",
+                        animation: false,
+                        layout: {
+                            padding: 10,
+                        },
+                    },
+                });
+
+                //sobrevivientes y muertes por edad y sexo (mujeres y niños primero)
+                new Chart(document.getElementById("tercerChart").getContext("2d"), {
+                    type: "bar",
+                    data: {
+                        labels: NombreArtista,
+                        datasets: [{ data: [am, cr, df, dg, tw, jam, jb, rt, mab, ds, bs, qh, mt, rs, cb, dw, aw, mp, jm, dt, ra, ar, se, fj, kb], label: "Cantidad de Cartas", backgroundColor: ["#8CB1E5"] }],
+                    },
+                    options: {
+                        indexAxis: "y",
+                        animation: false,
+                        layout: {
+                            padding: 10,
+                        },
+                    },
+                });
             }
+            todo().catch((error) => console.error(error));
+        </script>
+        <!--otro para los extras-->
+        <script>
+            // No todo se resuelve con pie, doughthout o barras, a veces se necesitan otros gráficos
+
+            async function otro() {
+                //el fetch
+                const consulta = await fetch("https://raw.githubusercontent.com/bastiloestacogido/05-05Datos/main/datos.json");
+                const data = await consulta.json();
+                var puntos = [];
+                var burbujas = [];
+                data.forEach((d) => {
+                    let info = { x: d.pib_per_capita, y: d.idh, pais: d.pais };
+                    let mas = { x: d.pib_per_capita, y: d.idh, r: Math.round(d.poblacion / 50000000), pais: d.pais };
+                    puntos.push(info);
+                    burbujas.push(mas);
+                });
+                console.log(burbujas);
+                //Gráfico de dispersión
+                //Para evidenciar si existe una relación o correlación entre las dos variables
+                new Chart(document.getElementById("sextoChart").getContext("2d"), {
+                    type: "scatter",
+                    data: {
+                        datasets: [
+                            {
+                                label: "Índice de desarrollo humano y renta per cápita",
+                                data: puntos,
+                                backgroundColor: "rgba(0,100,255,.5)",
+                                pointRadius: 5,
+                            },
+                        ],
+                    },
+                    options: {
+                        animation: false,
+                        scales: {
+                            x: {
+                                max: 140000,
+                                ticks: {
+                                    callback: function (numero) {
+                                        return "€ " + numero.toLocaleString("es-CL");
+                                    },
+                                },
+                            },
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => {
+                                        console.log(context);
+                                        return context.raw.pais + " tiene un PIB per cápita de € " + context.raw.x.toLocaleString("es-CL");
+                                    },
+                                },
+                            },
+                        },
+                    },
+                });
+                //Gráfico de burbujas
+                //Para analizar patrones o correlaciones de dos valores, considerando un tercer valor que se presenta en su radio
+                new Chart(document.getElementById("septimoChart").getContext("2d"), {
+                    type: "bubble",
+                    data: {
+                        datasets: [
+                            {
+                                label: "Índice de desarrollo humano y renta per cápita, con población",
+                                data: burbujas,
+                                backgroundColor: "rgba(0,100,255,.5)",
+                                pointRadius: 5,
+                            },
+                        ],
+                    },
+                    options: {
+                        animation: false,
+                        scales: {
+                            x: {
+                                max: 140000,
+                                ticks: {
+                                    callback: function (numero) {
+                                        return "€ " + numero.toLocaleString("es-CL");
+                                    },
+                                },
+                            },
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => {
+                                        console.log(context);
+                                        return context.raw.pais + " tiene un PIB per cápita de € " + context.raw.x.toLocaleString("es-CL");
+                                    },
+                                },
+                            },
+                        },
+                    },
+                });
+            }
+            otro().catch((error) => console.error(error));
         </script>
     </body>
 </html>
